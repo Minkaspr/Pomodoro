@@ -15,6 +15,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.mk.pomodoro.R;
 import com.mk.pomodoro.controller.Temporizador;
 
+import java.util.Locale;
+
 public class HomeFragment extends Fragment {
     AppCompatTextView tiempo;
     TabLayout tabLayout;
@@ -48,10 +50,10 @@ public class HomeFragment extends Fragment {
                 int position = tab.getPosition();
                 iniciarTemporizador = false;
                 if (position == 0) {
-                    prepararTemporizador(40 * 60);
+                    prepararTemporizador(45 * 60);
 
                 } else if (position == 1) {
-                    prepararTemporizador(20 * 60);
+                    prepararTemporizador(15 * 60);
                 }
                 botonIniciar.setVisibility(View.VISIBLE);
                 botonPausar.setVisibility(View.GONE);
@@ -65,7 +67,7 @@ public class HomeFragment extends Fragment {
             public void onTabReselected(TabLayout.Tab tab) {}
         });
 
-        prepararTemporizador(40 * 60);
+        prepararTemporizador(45 * 60);
 
         botonParar.setOnClickListener(v -> {
             temporizador.reiniciarTemporizador(barraProgresoCircular, tiempo);
@@ -105,13 +107,13 @@ public class HomeFragment extends Fragment {
         temporizador = new Temporizador(segundos * 1000L, 1000);
         temporizador.setEscuchadorTick(millisUntilFinished -> {
             int segundosRestantes = (int) (millisUntilFinished / 1000f);
-            tiempo.setText(String.format("%02d:%02d", segundosRestantes / 60, segundosRestantes % 60));
+            tiempo.setText(String.format(Locale.getDefault(), "%02d:%02d", segundosRestantes / 60, segundosRestantes % 60));
             barraProgresoCircular.setProgress(segundosRestantes);
         });
         temporizador.setEscuchadorFinalizacion(() -> tiempo.setText("00:00"));
         // Mostramos el tiempo inicial sin iniciar el temporizador
         int segundosRestantes = segundos;
-        tiempo.setText(String.format("%02d:%02d", segundosRestantes / 60, segundosRestantes % 60));
+        tiempo.setText(String.format(Locale.getDefault(), "%02d:%02d", segundosRestantes / 60, segundosRestantes % 60));
         barraProgresoCircular.setProgress(segundosRestantes);
         // Iniciamos el temporizador solo si iniciarTemporizador es verdadero
         if (iniciarTemporizador) {

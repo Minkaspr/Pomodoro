@@ -14,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/sub_title3"
-        android:textSize="18sp"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -41,8 +42,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/roboto_regular"
                 android:text="@string/option_1"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 />
 
             <com.google.android.material.materialswitch.MaterialSwitch

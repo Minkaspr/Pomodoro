@@ -4,6 +4,8 @@ import android.os.CountDownTimer;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 public class Temporizador {
     private long milisegundosFuturos;
     private long intervaloCuentaRegresiva;
@@ -86,7 +88,7 @@ public class Temporizador {
         temporizador.cancel();
         temporizador = new TemporizadorInterno(this, milisegundosFuturos, intervaloCuentaRegresiva);
         barraProgresoCircular.setProgress((int) (milisegundosFuturos / 1000));
-        tiempo.setText(String.format("%02d:%02d", milisegundosFuturos / 60000, (milisegundosFuturos % 60000) / 1000));
+        tiempo.setText(String.format(Locale.getDefault(), "%02d:%02d", milisegundosFuturos / 60000, (milisegundosFuturos % 60000) / 1000));
     }
 
     public void destruirTemporizador() {
