@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Pomodoro</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title">Pomodoro</string>
+    <string name="sub_title1">Trabajo</string>
+    <string name="sub_title2">Descanso</string>
+    <string name="sub_title3">Ajustes</string>
+
+    <string name="option_1">Modo Oscuro</string>
+    <string name="default_time">00:00</string>
+
+    <string name="time">Modo Oscuro</string>
+
+    <string name="btn_iniciar">Iniciar</string>
+    <string name="btn_parar">Parar</string>
+    <string name="btn_pausar">Pausar</string>
+
+    <string name="nav_inicio">Inicio</string>
+    <string name="nav_ajustes">Ajustes</string>
+    <string name="fondo_temp">fondo del temporizador</string>
+    <string name="btn_continuar">Continuar</string>
+</resources>
