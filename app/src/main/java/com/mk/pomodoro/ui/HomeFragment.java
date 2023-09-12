@@ -16,7 +16,6 @@ import com.mk.pomodoro.R;
 import com.mk.pomodoro.controller.Temporizador;
 
 public class HomeFragment extends Fragment {
-
     AppCompatTextView tiempo;
     TabLayout tabLayout;
     private ProgressBar barraProgresoCircular;
@@ -47,13 +46,17 @@ public class HomeFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
+                iniciarTemporizador = false;
                 if (position == 0) {
                     prepararTemporizador(40 * 60);
 
                 } else if (position == 1) {
                     prepararTemporizador(20 * 60);
                 }
-                iniciarTemporizador = false;
+                botonIniciar.setVisibility(View.VISIBLE);
+                botonPausar.setVisibility(View.GONE);
+                botonContinuar.setVisibility(View.GONE);
+                botonParar.setVisibility(View.GONE);
             }
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {}
@@ -65,7 +68,7 @@ public class HomeFragment extends Fragment {
         prepararTemporizador(40 * 60);
 
         botonParar.setOnClickListener(v -> {
-            temporizador.destruirTemporizador();
+            temporizador.reiniciarTemporizador(barraProgresoCircular, tiempo);
             botonIniciar.setVisibility(View.VISIBLE);
             botonPausar.setVisibility(View.GONE);
             botonContinuar.setVisibility(View.GONE);

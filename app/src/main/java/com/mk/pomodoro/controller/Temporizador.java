@@ -1,6 +1,8 @@
 package com.mk.pomodoro.controller;
 
 import android.os.CountDownTimer;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class Temporizador {
     private long milisegundosFuturos;
@@ -80,10 +82,11 @@ public class Temporizador {
         estaCorriendo = true;
     }
 
-    public void reiniciarTemporizador() {
+    public void reiniciarTemporizador(ProgressBar barraProgresoCircular, TextView tiempo) {
         temporizador.cancel();
         temporizador = new TemporizadorInterno(this, milisegundosFuturos, intervaloCuentaRegresiva);
-        iniciarTemporizador();
+        barraProgresoCircular.setProgress((int) (milisegundosFuturos / 1000));
+        tiempo.setText(String.format("%02d:%02d", milisegundosFuturos / 60000, (milisegundosFuturos % 60000) / 1000));
     }
 
     public void destruirTemporizador() {
